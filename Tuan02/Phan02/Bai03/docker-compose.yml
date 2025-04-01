@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: password    
+      MYSQL_DATABASE: mydb            
+    ports:
+      - "3306:3306"
+
+  phpmyadmin:
+    image: phpmyadmin:latest         
+    depends_on:
+      - db                        
+    environment:
+      PMA_HOST: db                 
+      PMA_PORT: 3306         
+    ports:
+      - "8081:80"                
